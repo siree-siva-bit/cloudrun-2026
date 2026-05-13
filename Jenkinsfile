@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         PROJECT_ID = 'jenikins-demo'  // GCP Project ID
-        GOOGLE_APPLICATION_CREDENTIALS = credentials('gcp-service-account')  // Service account credentials
+        GOOGLE_APPLICATION_CREDENTIALS = credentials('gcp-key')  // Service account credentials
         DOCKER_HUB_CREDENTIALS_USR = 'sivasiree'  // Your Docker Hub username
         IMAGE_NAME = 'cloudrun'  // Docker image name
         DOCKER_HUB_CREDENTIALS_PSWD = credentials('docker-hub-password')  // Docker Hub password credentials
