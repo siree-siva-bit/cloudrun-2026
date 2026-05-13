@@ -41,17 +41,18 @@ pipeline {
         stage('Deploy to Google Cloud Run') {
             steps {
         withCredentials([file(credentialsId: 'gcp-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
-            sh '''
-            gcloud auth activate-service-account --key-file=$"GOOGLE_APPLICATION_CREDENTIALS"
+
+            sh """
+            gcloud auth activate-service-account --key-file="$GOOGLE_APPLICATION_CREDENTIALS"
 
             gcloud config set project jenikins-demo
 
             gcloud run deploy cloudrun \
-              --image docker.io/sivasiree/cloudrun:5 \
+              --image docker.io/sivasiree/cloudrun:10 \
               --platform managed \
               --region us-central1 \
               --allow-unauthenticated
-            '''
+            """
         }
     }
 }
